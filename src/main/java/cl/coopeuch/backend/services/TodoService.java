@@ -28,6 +28,7 @@ public class TodoService {
     public TodoDTO update(Long id, TodoDTO todoDTO) {
         Todo todo = todoRepository.findById(id).get();
         todo.setDescription(todoDTO.getDescription());
+        todo.setDone(todoDTO.getDone());
         todoRepository.save(todo);
         return TodoMapper.toTodoDTO(todo);
     }
@@ -42,7 +43,7 @@ public class TodoService {
     }
 
     public List<TodoDTO> getAll() {
-        return todoRepository.findAll()
+        return todoRepository.findAllByOrderByIdDesc()
                 .stream()
                 .map(todo -> TodoMapper.toTodoDTO(todo))
                 .collect(Collectors.toList());
