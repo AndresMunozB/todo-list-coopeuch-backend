@@ -20,9 +20,8 @@ class BackendApplicationTests {
 	private MockMvc mockMvc;
 
 	@Test
-	void shouldReturnGetAll() throws Exception{
-		/*this.mockMvc.perform(get("/api/v1/todos")).andDo(print()).andExpect(status().isOk())
-				.andExpect(content().string(containsString("Get all")));*/
+	void shouldReturnOkForGetAll() throws Exception{
+		this.mockMvc.perform(get("/api/v1/todos")).andDo(print()).andExpect(status().isOk());
 	}
 
 }
